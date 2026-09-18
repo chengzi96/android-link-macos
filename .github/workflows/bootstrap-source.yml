@@ -25,6 +25,10 @@ jobs:
           SRC="$(find /tmp/android-link-source -mindepth 1 -maxdepth 1 -type d | head -n 1)"
           test -n "$SRC"
           rsync -a --delete --exclude='.git/' "$SRC/" ./
+          # The Actions token cannot create/update workflow files. Keep this
+          # bootstrap workflow for this commit and add release.yml separately.
+          rm -f .github/workflows/release.yml
+          git checkout HEAD -- .github/workflows/bootstrap-source.yml
       - name: Commit expanded source
         shell: bash
         run: |
