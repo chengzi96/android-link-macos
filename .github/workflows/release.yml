@@ -1,0 +1,43 @@
+name: Build public release
+
+on:
+  push:
+    branches: [main]
+
+permissions:
+  contents: write
+
+jobs:
+  release:
+    if: contains(github.event.head_commit.message, '[release v0.5.6]')
+    runs-on: macos-14
+    steps:
+      - name: Check out source
+        uses: actions/checkout@v4
+
+      - name: Run privacy scan
+        run: ./scripts/privacy-scan.sh
+
+      - name: Run tests
+        run: npm test
+
+      - name: Build installer
+        run: ./scripts/build-release.sh
+
+      - name: Build source archive
+        run: git archive --format=zip --output dist/AndroidLink-macOS-v0.5.6-source.zip HEAD
+
+      - name: Create or update GitHub Release
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          if gh release view v0.5.6 >/dev/null 2>&1; then
+            gh release upload v0.5.6 dist/AndroidLink-macOS-v0.5.6.zip dist/AndroidLink-macOS-v0.5.6-source.zip --clobber
+          else
+            gh release create v0.5.6 \
+              dist/AndroidLink-macOS-v0.5.6.zip \
+              dist/AndroidLink-macOS-v0.5.6-source.zip \
+              --target "$GITHUB_SHA" \
+              --title "Android Link v0.5.6" \
+              --notes "First public release. See README and KNOWN_ISSUES for setup, MCP integration, privacy notes and current compatibility limits."
+          fi
