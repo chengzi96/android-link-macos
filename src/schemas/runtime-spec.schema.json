@@ -1,0 +1,25 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "androidlink://schemas/runtime-spec.schema.json",
+  "title": "AndroidLink RuntimeSpec v1 placeholder",
+  "description": "Reserved for a future external External Spec Provider provider. AndroidLink 0.5.6 does not fabricate RuntimeSpec values.",
+  "type": "object",
+  "required": [
+    "runtimeSpecVersion",
+    "screenId"
+  ],
+  "properties": {
+    "runtimeSpecVersion": {
+      "type": "integer",
+      "minimum": 1
+    },
+    "screenId": {
+      "type": "string",
+      "minLength": 1
+    },
+    "elements": {
+      "type": "array"
+    }
+  },
+  "additionalProperties": true
+}

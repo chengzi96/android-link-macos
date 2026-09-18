@@ -1,0 +1,75 @@
+#!/bin/zsh -f
+set -eu
+ROOT="$HOME/Library/Application Support/AndroidLink"
+CANONICAL="$HOME/Applications/安卓连接助手.app"
+SELF_APP="${0:A:h:h:h}"
+
+alert() {
+  /usr/bin/osascript \
+    -e 'on run argv' \
+    -e 'display alert "安卓连接助手" message (item 1 of argv) as warning buttons {"好"} default button "好"' \
+    -e 'end run' -- "$1" >/dev/null 2>&1 || true
+}
+
+valid_app() {
+  local app="$1"
+  [[ -d "$app" && ! -L "$app" &&
+     -f "$app/Contents/Resources/bootstrap.zsh" && ! -L "$app/Contents/Resources/bootstrap.zsh" ]]
+}
+
+assistant_pid() {
+  local pid="$1" command
+  command="$(/bin/ps -p "$pid" -o command= 2>/dev/null || true)"
+  [[ "$command" == *'/AndroidLink/modules/code/'*'/wizard.mjs'* ||
+     "$command" == *'/安卓连接助手.app/Contents/Resources/wizard.mjs'* ]]
+}
+
+open_existing_page() {
+  local url_file="$ROOT/run/control-url" url base attempt
+  for attempt in {1..30}; do
+    if [[ -f "$url_file" && ! -L "$url_file" ]]; then
+      url="$(<"$url_file")"
+      if [[ "$url" == http://127.0.0.1:*#* ]]; then
+        base="${url%%#*}"
+        if /usr/bin/curl --silent --show-error --fail --max-time 1 "$base" >/dev/null 2>&1; then
+          if /usr/bin/open "$url" >/dev/null 2>&1; then return 0; fi
+          /usr/bin/osascript -e 'on run argv' -e 'open location (item 1 of argv)' -e 'end run' -- "$url" >/dev/null 2>&1 && return 0
+        fi
+      fi
+    fi
+    /bin/sleep 0.1
+  done
+  return 1
+}
+
+# Prefer the bundle the user actually opened. App Translocation is the exception:
+# when macOS runs a downloaded copy from a randomized path, use the installed canonical bundle.
+if [[ "$SELF_APP" == *"/AppTranslocation/"* ]] && valid_app "$CANONICAL"; then
+  RESOURCE_DIR="$CANONICAL/Contents/Resources"
+elif valid_app "$SELF_APP"; then
+  RESOURCE_DIR="$SELF_APP/Contents/Resources"
+elif valid_app "$CANONICAL"; then
+  RESOURCE_DIR="$CANONICAL/Contents/Resources"
+else
+  alert '尚未完成安装。请先双击安装包里的“安装安卓连接助手.command”。'
+  exit 1
+fi
+
+LOCK="$ROOT/assistant.lock"
+CONTROL_URL="$ROOT/run/control-url"
+if [[ -f "$LOCK" && ! -L "$LOCK" ]]; then
+  PID="$(/usr/bin/plutil -extract pid raw -o - "$LOCK" 2>/dev/null || true)"
+  if [[ "$PID" == <-> ]] && /bin/kill -0 "$PID" 2>/dev/null; then
+    if assistant_pid "$PID"; then
+      if open_existing_page; then exit 0; fi
+      alert '安卓连接助手正在启动，但控制页尚未就绪。请稍后再次打开。'
+      exit 0
+    fi
+    # PID was reused by another process. The lock belongs to a crashed old run.
+    /bin/rm -f "$LOCK" "$CONTROL_URL"
+  else
+    /bin/rm -f "$LOCK" "$CONTROL_URL"
+  fi
+fi
+
+exec /bin/zsh -f "$RESOURCE_DIR/bootstrap.zsh" app

@@ -1,0 +1,81 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "androidlink://schemas/selector.schema.json",
+  "title": "AndroidLink Selector v1",
+  "type": "object",
+  "properties": {
+    "elementRef": {
+      "type": "string"
+    },
+    "qaId": {
+      "type": "string",
+      "maxLength": 220
+    },
+    "resourceId": {
+      "type": "string",
+      "maxLength": 220
+    },
+    "text": {
+      "$ref": "#/$defs/textMatch"
+    },
+    "contentDescription": {
+      "$ref": "#/$defs/textMatch"
+    },
+    "className": {
+      "type": "string",
+      "maxLength": 220
+    },
+    "clickable": {
+      "type": "boolean"
+    },
+    "visible": {
+      "type": "boolean"
+    },
+    "enabled": {
+      "type": "boolean"
+    },
+    "within": {
+      "$ref": "#"
+    },
+    "index": {
+      "type": "integer",
+      "minimum": 0,
+      "maximum": 1000
+    }
+  },
+  "$defs": {
+    "textMatch": {
+      "oneOf": [
+        {
+          "type": "string",
+          "maxLength": 200
+        },
+        {
+          "type": "object",
+          "minProperties": 1,
+          "maxProperties": 1,
+          "properties": {
+            "equals": {
+              "type": "string",
+              "maxLength": 200
+            },
+            "contains": {
+              "type": "string",
+              "maxLength": 200
+            },
+            "startsWith": {
+              "type": "string",
+              "maxLength": 200
+            },
+            "endsWith": {
+              "type": "string",
+              "maxLength": 200
+            }
+          },
+          "additionalProperties": false
+        }
+      ]
+    }
+  },
+  "additionalProperties": false
+}

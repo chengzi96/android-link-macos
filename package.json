@@ -1,0 +1,16 @@
+{
+  "name": "android-link-macos",
+  "version": "0.5.6",
+  "private": false,
+  "type": "module",
+  "description": "Local macOS Android device control with shared MCP/CLI automation.",
+  "license": "MIT",
+  "scripts": {
+    "test": "node --test tests/*.test.mjs",
+    "privacy:scan": "bash scripts/privacy-scan.sh",
+    "build": "bash scripts/build-release.sh"
+  },
+  "engines": {
+    "node": ">=20.19"
+  }
+}

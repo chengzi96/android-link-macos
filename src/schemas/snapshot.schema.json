@@ -1,0 +1,20 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "androidlink://schemas/snapshot.schema.json",
+  "title": "AndroidLink Snapshot v1",
+  "type": "object",
+  "required": ["snapshotVersion", "capturedAt", "device", "app", "screen", "elements"],
+  "properties": {
+    "snapshotVersion": {"const": 1},
+    "capturedAt": {"type": "string"},
+    "device": {"type": "object"},
+    "app": {"type": "object"},
+    "screen": {"type": "object"},
+    "elements": {"type": "array", "maxItems": 200},
+    "screenshot": {"type": ["object", "null"]},
+    "pageXml": {"type": "object"},
+    "runtimeSpec": {"type": ["object", "null"]},
+    "runtimeSpecError": {"type": "object"}
+  },
+  "additionalProperties": true
+}

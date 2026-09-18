@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0"><dict>
+  <key>CFBundleName</key><string>安卓连接助手</string>
+  <key>CFBundleDisplayName</key><string>安卓连接助手</string>
+  <key>CFBundleIdentifier</key><string>local.androidlink.assistant</string>
+  <key>CFBundleExecutable</key><string>launcher</string>
+  <key>CFBundlePackageType</key><string>APPL</string>
+  <key>CFBundleShortVersionString</key><string>0.5.6</string>
+  <key>CFBundleVersion</key><string>39</string>
+  <key>LSMinimumSystemVersion</key><string>12.0</string>
+  <key>LSUIElement</key><true/>
+  <key>NSAppleEventsUsageDescription</key><string>用于打开安卓连接助手的本机控制页面与文件位置。</string>
+</dict></plist>

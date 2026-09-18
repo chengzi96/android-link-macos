@@ -1,0 +1,252 @@
+{
+  "manifestVersion": 1,
+  "productId": "local.androidlink.assistant",
+  "appVersion": "0.5.6",
+  "build": 39,
+  "codeVersion": "0.5.6-build39",
+  "protocolVersion": 1,
+  "minimumMacOS": "12.0",
+  "architectures": [
+    "arm64",
+    "x64"
+  ],
+  "runtime": {
+    "node": "22.16.0",
+    "appium": "3.7.0",
+    "uiautomator2": "8.6.1",
+    "mcpServer": "2.0.0",
+    "scrcpyServer": "4.1"
+  },
+  "modules": {
+    "shell": {
+      "version": 8,
+      "files": [
+        {
+          "path": "bootstrap.zsh",
+          "sha256": "6045980aeababf02473efe595a1e4204fa04a03996b493935078a3cd568415c4",
+          "bytes": 15754,
+          "mode": "0o755"
+        },
+        {
+          "path": "update-manager.mjs",
+          "sha256": "ff646f61252b6b98f23bb90fb004e6744d2b77da4988828021c132768ae9fa5e",
+          "bytes": 11289,
+          "mode": "0o644"
+        },
+        {
+          "path": "连接手机.command",
+          "sha256": "66cdb67edf4ad2b6669c6126f0ed338b22354bde74e0a5cdce3c037544196873",
+          "bytes": 90,
+          "mode": "0o755"
+        }
+      ]
+    },
+    "core": {
+      "version": 8,
+      "files": [
+        {
+          "path": "core.mjs",
+          "sha256": "48d07c2db873a87e545e05d03ca1068e5b1e87828891081a05657d0054e27388",
+          "bytes": 11178,
+          "mode": "0o644"
+        },
+        {
+          "path": "wizard.mjs",
+          "sha256": "c21c0a67ce440d3a4aa12ca63ea1c8144ac54bf4c23b99f9b86c14f4eb852794",
+          "bytes": 52584,
+          "mode": "0o644"
+        },
+        {
+          "path": "control.mjs",
+          "sha256": "27f66c9b3ef4bc9d10c3a68e26f9940fc00badeb0134698d6252d5124a37f60f",
+          "bytes": 65076,
+          "mode": "0o644"
+        },
+        {
+          "path": "refresh-scheduler.mjs",
+          "sha256": "91250f268476aa678978d4c785d4a95cf404b4a320f9c92381f8bf0fd6a3835c",
+          "bytes": 549,
+          "mode": "0o644"
+        },
+        {
+          "path": "video-stream.mjs",
+          "sha256": "1b7c964ec4bc8e363f7e239fd1fe3cc95724a0f8fb29994e1d446ef75a8ef370",
+          "bytes": 28458,
+          "mode": "0o644"
+        },
+        {
+          "path": "stream-client.mjs",
+          "sha256": "a310bdf5f30f6414f549aead545fbdf37ab3a451eb58bd65743f54d64ef52718",
+          "bytes": 10990,
+          "mode": "0o644"
+        },
+        {
+          "path": "stream-recovery.mjs",
+          "sha256": "c55fad33ebeda08bf3e9198dc998f59c0f8d168e808da278e8631798f717bede",
+          "bytes": 2814,
+          "mode": "0o644"
+        },
+        {
+          "path": "mjpeg-stream.mjs",
+          "sha256": "c6ba9ed0e75ee96679a6235f6dcc086aae5fd86cde30eb5df19cd7f5c78e7811",
+          "bytes": 3345,
+          "mode": "0o644"
+        },
+        {
+          "path": "phone-recording.mjs",
+          "sha256": "aa9395bcd3b548674e1d26f01cc61840ebeeb9ab5fc27659f4c78c548a7488ef",
+          "bytes": 15608,
+          "mode": "0o644"
+        }
+      ]
+    },
+    "web": {
+      "version": 6,
+      "files": [
+        {
+          "path": "control.html",
+          "sha256": "7ed49d308c25afadedb62d19b38cf23a8ad8bfd38a9d9983c5d91b03133c5969",
+          "bytes": 7950,
+          "mode": "0o644"
+        },
+        {
+          "path": "control.js",
+          "sha256": "0a1d40fef3defb14d0b90dcdce41594f03664f243d3cd5e69735bd00bb053d4b",
+          "bytes": 53097,
+          "mode": "0o644"
+        },
+        {
+          "path": "control.css",
+          "sha256": "6b9382b636be77e1c026309e313b4581d5b0d554adbe400e4994d7dc457e3c24",
+          "bytes": 15654,
+          "mode": "0o644"
+        }
+      ]
+    },
+    "automation": {
+      "version": 4,
+      "files": [
+        {
+          "path": "automation-errors.mjs",
+          "sha256": "4e6a3043b1364e91244f19342c3fda1fa8ef0a66936a261f96df593cdb4b6a1d",
+          "bytes": 3813,
+          "mode": "0o644"
+        },
+        {
+          "path": "automation-protocol.mjs",
+          "sha256": "d7c11797df612087bcf9399b1af2d1261224e63b2e56f470631ad8e8635ab1b5",
+          "bytes": 2270,
+          "mode": "0o644"
+        },
+        {
+          "path": "automation-service.mjs",
+          "sha256": "6f2bfe90f652a6301a7fc9a2f50975591612ef68bbaf464f7843564689178e03",
+          "bytes": 31781,
+          "mode": "0o644"
+        },
+        {
+          "path": "control-lease.mjs",
+          "sha256": "a2438dc4ebf7ff23577e6b3340a5ab853d200e37689a2e6d3bbcde0eca6ea75c",
+          "bytes": 4310,
+          "mode": "0o644"
+        },
+        {
+          "path": "ui-tree.mjs",
+          "sha256": "3459d7d51c3c5fafdd01c72ec816c895f2e7101b2409c1bf51b36f61191affec",
+          "bytes": 4538,
+          "mode": "0o644"
+        },
+        {
+          "path": "selectors.mjs",
+          "sha256": "cac92fa7ba67b023ab3d9d0d9e336117ac92b885726a8c786bebd445dc54c001",
+          "bytes": 4868,
+          "mode": "0o644"
+        },
+        {
+          "path": "runtime-spec-provider.mjs",
+          "sha256": "0e10cfb4eb053e31cd90eb42a9725dbec161cdbd9ba49fdb1c9a46927320aa31",
+          "bytes": 392,
+          "mode": "0o644"
+        },
+        {
+          "path": "checkpoint.mjs",
+          "sha256": "e81258b6f0bb8f19b1e96ab50b394fda9a892aa28e90e2a6f62518d664a5d12c",
+          "bytes": 3305,
+          "mode": "0o644"
+        },
+        {
+          "path": "ipc-server.mjs",
+          "sha256": "82ded92ff39cb6c40528a86a2b8443403a1f2f1133ef3ede50e16c33ec0d4bce",
+          "bytes": 7578,
+          "mode": "0o644"
+        },
+        {
+          "path": "ipc-client.mjs",
+          "sha256": "dfb445b3f184a26c7d3195d50e4aab94f4b6f54cc27a2e390474e5ee2dcddede",
+          "bytes": 3190,
+          "mode": "0o644"
+        },
+        {
+          "path": "schemas/ipc-request.schema.json",
+          "sha256": "8c7c928e61e896bb39e3e872a8ebd01ea303c88c5c1dd082a3fd542159ab9f0a",
+          "bytes": 589,
+          "mode": "0o644"
+        },
+        {
+          "path": "schemas/ipc-response.schema.json",
+          "sha256": "25d6954045acb5b7462583b9214e17e3f33a566ef65c3dd644914e390149a3a5",
+          "bytes": 737,
+          "mode": "0o644"
+        },
+        {
+          "path": "schemas/snapshot.schema.json",
+          "sha256": "b1dae8a85aac870ad0aad65e80c54d94f8dfb412fc63d036932f111f9ba33eb5",
+          "bytes": 721,
+          "mode": "0o644"
+        },
+        {
+          "path": "schemas/selector.schema.json",
+          "sha256": "f5466127f11fc2e21b971b21e298aedd3809e64a9685b436448dcbd7a5cff79a",
+          "bytes": 1643,
+          "mode": "0o644"
+        },
+        {
+          "path": "schemas/runtime-spec.schema.json",
+          "sha256": "dbba0c44be05ccba91b70383a3ede594cd355f6884348c94ae6a81930d7895ff",
+          "bytes": 649,
+          "mode": "0o644"
+        }
+      ]
+    },
+    "mcp": {
+      "version": 3,
+      "files": [
+        {
+          "path": "cli.mjs",
+          "sha256": "e56997ff2888c864fc789c47093a40a06e781c5640ce49084ea4fe1e18a74a66",
+          "bytes": 5974,
+          "mode": "0o755"
+        },
+        {
+          "path": "mcp-server.mjs",
+          "sha256": "280e850e07f8e9e09636228af98435f372399b321232d5c220e8332d3977dabb",
+          "bytes": 9416,
+          "mode": "0o755"
+        },
+        {
+          "path": "ai-integration.mjs",
+          "sha256": "cc3448ec070e4495e45141788621fa811b15311d7e372dee077e77f0b9d77adb",
+          "bytes": 10320,
+          "mode": "0o644"
+        }
+      ]
+    }
+  },
+  "updateModel": {
+    "fullApp": "atomic replacement with rollback backup",
+    "codePatch": "external code bundle + atomic active-code pointer",
+    "userEvidencePreserved": true
+  },
+  "uiMode": "browser",
+  "distribution": "lightweight"
+}
